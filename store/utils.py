@@ -1,11 +1,14 @@
 import json
 import uuid
-from .models import Product, Order, OrderItem, ShippingAddress, Customer
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from .models import Product, Order, OrderItem, ShippingAddress, Customer, User
 
 
 def get_items_orders_and_cart_items(request):
     items, order, cart_items = get_cart_items(request)
-    return {'items': items, 'order': order, 'cart_items': cart_items}
+    return {'items': items, 'order': order, 'cart_items': cart_items, 'is_authenticated': request.user.is_authenticated}
 
 
 def get_all_products():
@@ -162,3 +165,52 @@ def process_order_info(request):
         raise Exception("Order total is zero")
 
     raise Exception("Process order info not found")
+
+
+def validate_login(request):
+    if request.data:
+        username = request.data.get('username', '')
+        if not username:
+            messages.error(request, "Username not found")
+            return False, request
+
+        password = request.data.get('password', '')
+        if not password:
+            messages.error(request, 'Password not found')
+            return False, request
+
+        user = authenticate(request, username=username, password=password)
+        if user:
+            login(request, user)
+            return True, request
+        messages.error(request, "User credentials are wrong")
+        return False, request
+
+    raise Exception("Request data not found in registration")
+
+
+def register_user(email, name, password, request):
+    user = User(email=email, first_name=name)
+    user.set_password(password)
+    user.save()
+    customer = Customer(user=user, email=email, name=name)
+    customer.save()
+    messages.success(request, "User registered! Please login.")
+    return True, request
+
+
+def validate_register_user_details(request):
+    if request.data:
+        email = request.data.get('email', '')
+        name = request.data.get('name', '')
+        pass1 = request.data.get('password1', '')
+        pass2 = request.data.get('password2', '')
+        if not email or not pass1 or not pass2 or not name:
+            messages.error(request, "Entered details are blank")
+            return False, request
+        if pass1 != pass2:
+            messages.error(request, "Entered passwords are not matching")
+            return False, request
+
+        return register_user(email, name, pass1, request)
+    raise Exception("Request data not found in the registration")

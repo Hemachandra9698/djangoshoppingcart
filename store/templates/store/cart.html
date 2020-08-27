@@ -1,6 +1,7 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
+{{ is_authenticated|json_script:"authenticated" }}
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="box-element">

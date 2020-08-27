@@ -1,7 +1,5 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
-from django.contrib import messages
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -44,27 +42,32 @@ class Login(APIView):
     def get(self, request):
         # check if the user is already logged
         if request.user.is_authenticated:
-            return redirect('/store/store.html')
-
-        return render(request, 'store/login.html', {})
+            return redirect('store')  # redirect to store.html -> homepage
+        context = utils.get_items_orders_and_cart_items(request)
+        return render(request, 'store/login.html', context)
 
     def post(self, request):
-        if request.data:
-            username = request.data.get('username', '')
-            if not username:
-                messages.error(request, "Username not found")
-                return render(request, 'store/login.html', {})
-            password = request.data.get('password', '')
-            if not password:
-                messages.error(request,'Password not found')
-                return render(request, 'store/login.html', {})
-
-            user = authenticate(request, username=username, password=password)
-            if user:
-                login(request, user)
-                return redirect("/store/store.html")
+        login, request = utils.validate_login(request)
+        context = utils.get_items_orders_and_cart_items(request)
+        if not login:
+            return render(request, 'store/login.html', context)
+        return redirect('store')  # redirect to homepage
 
 
-class  Register(APIView):
+class Register(APIView):
     def get(self, request):
-        return ""
+        context = utils.get_items_orders_and_cart_items(request)
+        return render(request, 'store/register.html', context)
+
+    def post(self, request):
+        register, request =  utils.validate_register_user_details(request)
+        context = utils.get_items_orders_and_cart_items(request)
+        if not register:
+            return render(request, 'store/register.html', context)
+        return render(request, 'store/login.html', context)
+
+
+class Logout(APIView):
+    def get(self, request):
+        logout(request)
+        return redirect('store') # redirect to home page

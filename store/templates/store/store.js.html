@@ -1,0 +1,16 @@
+<script type="text/javascript">
+var is_authenticated = JSON.parse(document.getElementById('authenticated').textContent);
+// replace nav bar login button with "MyAccount" section if the user is already logged in
+if (is_authenticated != false) { // user already looged in
+    var nav_bar_dropdown = '<li class="nav-item dropdown">' +
+        '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" ' +
+        'aria-haspopup="true" aria-expanded="false">My Account</a>' +
+        '<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
+        '<a class="dropdown-item" href="#">Profile</a>' +
+        '<a class="dropdown-item" href="#">Orders</a>' +
+        '<a class="dropdown-item" href="{% url 'logout' %}">Logout</a>'+
+        '</li>';
+    var login_btn = document.getElementById('nav-slbtn').children[2]; //getting login button text
+    login_btn.outerHTML = nav_bar_dropdown;
+}
+</script>

@@ -12,57 +12,11 @@
 
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-	<script type="text/javascript">
-		var user = '{{request.user}}'
-		// get csrf token
-		function getToken(name) {
-		    var cookieValue = null;
-		    if (document.cookie && document.cookie !== '') {
-		        var cookies = document.cookie.split(';');
-		        for (var i = 0; i < cookies.length; i++) {
-		            var cookie = cookies[i].trim();
-		            // Does this cookie string begin with the name we want?
-		            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-		                break;
-		            }
-		        }
-		    }
-		    return cookieValue;
-		}
-		var csrftoken = getToken('csrftoken')
-		console.log("csrftoken is ", csrftoken);
+	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 
-		function getCookie(name) {
-		    // Split cookie string and get all individual name=value pairs in an array
-		    var cookieArr = document.cookie.split(";");
-
-		    // Loop through the array elements
-		    for(var i = 0; i < cookieArr.length; i++) {
-		        var cookiePair = cookieArr[i].split("=");
-
-		        /* Removing whitespace at the beginning of the cookie name
-		        and compare it with the given string */
-		        if(name == cookiePair[0].trim()) {
-		            // Decode the cookie value and return
-		            return decodeURIComponent(cookiePair[1]);
-		        }
-		    }
-
-		    // Return null if not found
-		    return null;
-		}
-		var cart = JSON.parse(getCookie('cart'))
-
-		if (cart == undefined){
-			cart = {}
-			console.log('Cart Created!', cart)
-			document.cookie ='cart=' + JSON.stringify(cart) + ";domain=;path=/"
-		}
-		console.log('Cart:', cart)
-	</script>
 </head>
 <body>
+{{ is_authenticated|json_script:"authenticated" }}
 	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffc266;">
 	  <a class="navbar-brand" href="{% url 'store' %}">MyStore</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +29,7 @@
 	        <a class="nav-link" href="{% url 'store' %}">All Products<span class="sr-only">(current)</span></a>
 	      </li>
 	    </ul>
-	    <div class="form-inline my-2 my-lg-0">
+	    <div class="form-inline my-2 my-lg-0" id="nav-slbtn">
 			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 			&nbsp; &nbsp;
@@ -110,7 +64,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 	<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
-
+	{% include "store/store.js.html" %}
 
 </body>
 </html>
