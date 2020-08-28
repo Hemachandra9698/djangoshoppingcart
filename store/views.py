@@ -71,3 +71,10 @@ class Logout(APIView):
     def get(self, request):
         logout(request)
         return redirect('store') # redirect to home page
+
+
+class ProductView(APIView):
+    def get(self, request, product_id):
+        context = utils.get_items_orders_and_cart_items(request)
+        context['product'] = utils.get_product_context(product_id)
+        return render(request, "store/productpage.html", context)

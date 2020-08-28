@@ -9,7 +9,7 @@ for (i = 0; i < updateBtns.length; i++) {
 		if (is_authenticated == false){
 		    addCookieItem(productId, action);
         }else{
-			updateUserOrderInCart(productId, action)
+			updateUserOrderInCart(productId, action);
 		}
 	})
 }

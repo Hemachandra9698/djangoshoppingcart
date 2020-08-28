@@ -1,0 +1,18 @@
+.flex-container {
+        display: flex;
+        height: 5px;
+        flex-direction:row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+}
+.flex-container-col{
+        display: flex;
+        flex-direction:column;
+        flex-wrap: wrap;
+        justify-content: center;
+}
+.priceBlockBuyingPriceString {
+  font-size: 40px;
+        color: red;
+}

@@ -1,26 +1,7 @@
--- MySQL dump 10.13  Distrib 5.7.23, for Win64 (x86_64)
---
--- Host: localhost    Database: shoppingcart
--- ------------------------------------------------------
--- Server version	5.7.23-log
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
---
--- Table structure for table `store_order`
---
 
 
 LOCK TABLES `store_product` WRITE;
 /*!40000 ALTER TABLE `store_product` DISABLE KEYS */;
-INSERT INTO `store_product` VALUES (1,'Headphones',179.99,0,'headphones.jpg'),(2,'Mount of Olives Book',14.67,0,'book.jpg'),(3,'Project Source Code',19.99,1,'sourcecode.jpg'),(4,'Watch',259,0,'watch.jpg'),(5,'Shoes',89.99,0,'shoes.jpg'),(6,'T-Shirt',25.99,0,'shirt.jpg'),(7,'Iphone 11 Pro Max',890,0,'iphone.jpg'),(8,'AMD Ryzen Processor',385,0,'AMD-Ryzen-5-3600-3rd-Gen-Desktop-Processor-1.jpg'),(9,'Miniso Ear Buds',124,0,'Miniso_Earbuds.jpg');
+INSERT INTO `store_product` VALUES (1,'Headphones',179.99,0,'headphones.jpg','1) Compatible with all Android & iOS Smartphones.\r\n2) 10-minute charge gives 180 minutes of music playback. \r\n     A single charge provides 12 hours of music playback.\r\n3) AI-powered noise reduction during calls which blocks all the outside noise.\r\n4) Lightweight (22 g), skin friendly and comfortable liquid silicon neckband.\r\n5) 9.2 mm full range dynamic speaker provides clear sound & powerful bass. \r\n6) Certified Hi-Res Wireless Audio.\r\n7) IPX5 rating : Water and Dust resistant\r\n8) 12 Month Manufacturer Warranty.','2020-08-28 15:03:20.918221','2020-08-28 15:03:20.918221'),(2,'Classmate Premium Notebook',14.67,0,'classmate-book.jpg','The cover design of the notebook is subject to change.\r\nIt depends on stock availability\r\nPulse 6 sub spiral notebook with 300 pages','2020-08-28 15:03:20.918221','2020-08-28 15:03:20.918221'),(3,'Core Python Text Book',19.99,1,'python-text-book.png','1) Python is already occupying 2nd to 4th position and will be the most \r\n    demanded language after Java in near future. \r\n2) Python is used with other programming languages on Internet as well\r\n    as for developing standalone applications. \r\n3) Python programmers are paid high salaries in the software development industry. \r\n4) Hence, it is time for beginners as well as existing programmers to focus their attention on Python.','2020-08-28 15:03:20.918221','2020-08-28 15:03:20.918221'),(4,'Watch',259,0,'watch.jpg',NULL,'2020-08-28 15:03:20.918221','2020-08-28 15:03:20.918221'),(5,'Shoes',89.99,0,'shoes.jpg',NULL,'2020-08-28 15:03:20.918221','2020-08-28 15:03:20.918221'),(6,'T-Shirt',25.99,0,'shirt.jpg',NULL,'2020-08-28 15:03:20.918221','2020-08-28 15:03:20.918221'),(7,'Iphone 11 Pro Max',890,0,'iphone.jpg',NULL,'2020-08-28 15:03:20.918221','2020-08-28 15:03:20.918221'),(8,'AMD Ryzen Processor',385,0,'AMD-Ryzen-5-3600-3rd-Gen-Desktop-Processor-1.jpg',NULL,'2020-08-28 15:03:20.918221','2020-08-28 15:03:20.918221'),(9,'Miniso Ear Buds',124,0,'Miniso_Earbuds.jpg','1) [One Touch Control & Voice Assistant] With one multifunction button, \r\n     you can play/pause, previous/next track and answer/hang-up calls.\r\n     Voice assistant function lets you access siri/Google Assistant.\r\n2) [Auto pairing ] Automatically pair with your device as soon as you take them out of the case.\r\n     No need to manually pair to your device each time.\r\n3) [Passive Noise Canceling] These Truly Wireless earbuds can block out most of surrounding noises.\r\n     You will be out of the street noise and get into the fantastic world of music with the sound quality\r\n4) Offers playback time of up to 5.5 hours for every charge. \r\n5) Carrying case can give 4 additional charges to the earbuds making total play-time of up to 120 Hours.','2020-08-28 15:03:20.918221','2020-08-28 15:03:20.918221');
 /*!40000 ALTER TABLE `store_product` ENABLE KEYS */;
 UNLOCK TABLES;
