@@ -13,4 +13,38 @@ if (is_authenticated != false) { // user already looged in
     var login_btn = document.getElementById('nav-slbtn').children[2]; //getting login button text
     login_btn.outerHTML = nav_bar_dropdown;
 }
+
+//below code will be called when user clicks on view button of any product
+
+/*var view_product_page_button = document.getElementsByClassName('view-product');
+debugger;
+for (i = 0; i < view_product_page_button.length; i++) {
+	view_product_page_button[i].addEventListener('click', function(){
+		var productId = this.dataset.product;
+		var action = this.dataset.action
+		console.log('productId:', productId, 'Action:', action)
+		console.log('user logged in : ', is_authenticated);
+
+	})
+}
+function updateUserOrderInCart(productId, action){
+	console.log('User is authenticated, sending data...')
+
+		var url = '/product/'
+
+		fetch(url+productId+"/", {
+			method:'POST',
+			headers:{
+				'Content-Type':'application/json',
+                'X-CSRFToken': csrftoken,
+			},
+			body:JSON.stringify({'productId':productId, 'action':action})
+		})
+		.then((response) => {
+		   return response.json();
+		})
+		.then((data) => {
+		    location.reload();
+		});
+}*/
 </script>

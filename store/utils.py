@@ -1,6 +1,5 @@
 import json
 import uuid
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from .models import Product, Order, OrderItem, ShippingAddress, Customer, User
@@ -214,3 +213,10 @@ def validate_register_user_details(request):
 
         return register_user(email, name, pass1, request)
     raise Exception("Request data not found in the registration")
+
+
+def get_product_context(product_id):
+    try:
+        return Product.objects.get(id=product_id)
+    except Product.DoesNotExist:
+        raise Exception("Product not found with id:{}".format(product_id))

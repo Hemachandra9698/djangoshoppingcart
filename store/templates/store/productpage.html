@@ -1,0 +1,58 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/productpage.css' %}">
+<div  class="flex-container">
+    <div class="flex-container-col">
+          <div id="titleSection" class="a-section a-spacing-none">
+            <h1 id="title" class="a-size-large a-spacing-none">
+              <span id="productTitle" class="a-size-large product-title-word-break">
+                {{product.name}}
+              </span>
+            </h1>
+          </div>
+
+          <div id="price" class="a-section a-spacing-small">
+            <table class="a-lineitem">
+              <tbody>
+                <tr id="priceblock_ourprice_row">
+                  <td id="priceblock_ourprice_lbl" class="a-color-secondary a-size-base a-text-right a-nowrap">Price:</td>
+                  <td class="a-span12">
+                      <span id="priceblock_ourprice" class="a-size-medium a-color-price priceBlockBuyingPriceString">
+                          &nbsp;<strong>{{product.price|floatformat:2}}</strong>$
+                      </span>
+                  </td>
+                </tr>
+                <tr id="vatMessage">
+                  <td></td>
+                  <td>
+                    <span class="a-size-base">&nbsp;&nbsp;&nbsp;&nbsp;Inclusive of all taxes</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+            <br>
+          <div class="a-button-stack">
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+          </div>
+            <br>
+          <div id="feature-bullets" class="a-section a-spacing-medium a-spacing-top-small">
+            <ul class="a-unordered-list a-vertical a-spacing-mini">
+              <li><span class="a-list-item">
+                  {{product.description|linebreaks}}
+                </span></li>
+            </ul>
+          </div>
+      </div>
+    <div id="main-image-container" class="a-dynamic-image-container" style="height: 700px;">
+      <ul class="a-unordered-list a-nostyle a-horizontal list maintain-height">
+        <li class="image item itemNo5 maintain-height" style="cursor: pointer;">
+            <div class="imgTagWrapper" style="height: 700px;">
+              <img src="{{product.image.url}}" class="a-dynamic-image a-stretch-vertical" id="" style="max-height: 500px; max-width: 303.596px;">
+            </div>
+        </li>
+      </ul>
+    </div>
+ </div>
+{% endblock content %}
