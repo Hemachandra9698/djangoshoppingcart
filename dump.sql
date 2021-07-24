@@ -1,4 +1,4 @@
-
+use shoppingcart;
 
 LOCK TABLES `store_product` WRITE;
 /*!40000 ALTER TABLE `store_product` DISABLE KEYS */;

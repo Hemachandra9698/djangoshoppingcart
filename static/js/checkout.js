@@ -1,4 +1,6 @@
-    if (user != 'AnonymousUser'){
+    //if (user != 'AnonymousUser'){
+var is_authenticated = JSON.parse(document.getElementById('authenticated').textContent);
+    if(is_authenticated){
 		 	document.getElementById('user-info').innerHTML = ''
     }
 

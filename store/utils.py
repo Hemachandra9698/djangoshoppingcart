@@ -2,7 +2,7 @@ import json
 import uuid
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from .models import Product, Order, OrderItem, ShippingAddress, Customer, User
+from .models import *
 
 
 def get_items_orders_and_cart_items(request):
