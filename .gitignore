@@ -2,7 +2,6 @@
 __pycache__/
 ecommerce/__pycache__/
 store/__pycache__/
-store/migrations/*.py
 *.py[cod]
 
 # C extensions
